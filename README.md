@@ -8,7 +8,7 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 * jdk-14
 * (oracleDB & Toad) -> MariaDB
 
-> Cafe24 호스팅
+> Cafe24 구성
 * Tomcat 8.0.x
 * JSP 2.3
 * Servlet 3.1
@@ -24,7 +24,7 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 ## 2.구현부
 > 주요 메소드 및 기능
 <div>
-OnlinePhonecaseShopping
+_OnlinePhonecaseShopping
 ├── _build <br>
 |&nbsp;&nbsp;&nbsp;&nbsp;└── _classes <br>
 |&nbsp;&nbsp;&nbsp;&nbsp;├── _model <br>
@@ -53,23 +53,23 @@ OnlinePhonecaseShopping
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── ProdListCon.class <br>
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── RegisterCon.class <br>
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── RegisterModiCon.class <br>
-└── _WebContent
-    ├── CustList.jps
-    ├── CustMode.jps
-    ├── CustOrderList.jps
-    ├── EmpProdForm.jps
-    ├── Index.jps
-    ├── Login.jps
-    ├── LoginCustProd.jps
-    ├── LoginEmpProd.jps
-    ├── MyCart.jps
-    ├── MyPage.jps
-    ├── OrderList.jps
-    ├── ProdList.jps
-    ├── RegisterForm.jps
-    ├── RegisterModi.jps
-    ├── TopNav.jps
-    └── TopNavLogin.jps
+└── _WebContent <br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── CustList.jps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── CustMode.jps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── CustOrderList.jps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── EmpProdForm.jps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── Index.jps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── Login.jps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── LoginCustProd.jps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── LoginEmpProd.jps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── MyCart.jps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── MyPage.jps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── OrderList.jps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── ProdList.jps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── RegisterForm.jps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── RegisterModi.jps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── TopNav.jps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;└── TopNavLogin.jps <br>
 </div>
 
 > 모델링
