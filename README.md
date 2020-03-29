@@ -33,7 +33,7 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 > 주요 메소드 및 기능
 <br>
 OnlinePhonecaseShopping
-~~~
+<div>
 ├── _build
 |   └── _classes
 |       ├── _model
@@ -79,7 +79,7 @@ OnlinePhonecaseShopping
     ├── RegisterModi.jps
     ├── TopNav.jps
     └── TopNavLogin.jps
-~~~
+</div>
 <br><br>
 > 모델링
 <br>
