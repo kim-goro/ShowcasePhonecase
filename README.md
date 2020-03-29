@@ -1,6 +1,6 @@
 # README.md
 Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하였습니다.  
-<span style="color:gray">현재 카페24 Access문제로 쿼리문 실행에 에러가 있습니다.</span>
+<div><span style="color:gray">현재 카페24 Access문제로 쿼리문 실행에 에러가 있습니다.</span></div>
 <br><br><br>
 
 
