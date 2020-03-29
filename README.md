@@ -24,8 +24,32 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 * git repo : https://github.com/kim-goro/ShowcasePhonecase    
 <br><br><br>
 
-## 2.구현부
-> 주요 메소드 및 기능
+## 2.주요 메소드 및 기능
+> 회원가입 및 로그인
+```java
+<script>
+	function openUser(option) {
+		document.getElementById("custInfo").style.display = option;
+	}
+	function MsgLoginValid() {
+		var form = document.RegistForm;
+		// validate null value
+		if (document.getElementById("email").value == ""
+				|| document.getElementById("pwd").value == ""
+				|| document.getElementById("userName").value == "") {
+			$("#myModal").modal("show");
+			return;
+		} else {
+			form.action = "RegisterCon.do";
+			form.submit();
+		}
+	}
+	$("#myModal").on("shown.bs.modal", function() {
+		$("#myInput").trigger("focus");
+	});
+</script>
+```
+
 
 ## 3.구조
 > 디렉토리
