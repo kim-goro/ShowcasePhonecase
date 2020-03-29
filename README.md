@@ -1,27 +1,22 @@
 # README.md
 Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하였습니다.
 <br><br><br>
-> 주요기능: 일자, BLD별로 일정한 비율로 validation set을 추출
-
-* Input: training set 경로, validation set의 비율
-
-* Output: valid폴더로 일부 파일이 이동 
 
 ## 1.개발환경
 <br>
 > 개발환경
-* Eclipse IDE 2020-03 
-* Apache-tomcat-9.0.33 
+* Eclipse IDE 2020-03
+* Apache-tomcat-9.0.33
 * jdk-14
-* (oracleDB & Toad) -> MariaDB 
+* (oracleDB & Toad) -> MariaDB
 <br>
 > Cafe24 호스팅
 <br><br>
-* Tomcat 8.0.x 
-* JSP 2.3 
+* Tomcat 8.0.x
+* JSP 2.3
 * Servlet 3.1
-* Open JDK 1.8.x 
-* MariaDB 10.1.x UTF-8    
+* Open JDK 1.8.x
+* MariaDB 10.1.x UTF-8
 <br><br>
 > 개발기간   
 <br>
