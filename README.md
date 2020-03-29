@@ -27,34 +27,39 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 > 주요 메소드 및 기능
 ```
 _OnlinePhonecaseShopping
+|
 ├── _build
+|   | 
 |   └── _classes
-|   ├── _model
-|   |   ├── Cart.class
-|   |   ├── CartDAO.class
-|   |   ├── Customer.class
-|   |   ├── CustomerDAO.class
-|   |   ├── CustOrder.class
-|   |   ├── CustOrderDAO.class
-|   |   ├── Employee.class
-|   |   ├── EmployeeDAO.class 
-|   |   ├── Product.class
-|   |   └── ProductDAO.class
-|   └── _control
-|       ├── CartCon.class 
-|       ├── CheckoutCon.class 
-|       ├── DelCartCon.class
-|       ├── EmpCustListCon.class
-|       ├── EmpOrderListCon.class
-|       ├── EmpProdCon.class 
-|       ├── LoginCon.class
-|       ├── LoginEmpCon.class 
-|       ├── LogoutCon.class
-|       ├── MyCartCon.class
-|       ├── MyPageCon.class
-|       ├── ProdListCon.class
-|       ├── RegisterCon.class
-|       └── RegisterModiCon.class 
+|       | 
+|       ├── _model
+|       |   ├── Cart.class
+|       |   ├── CartDAO.class
+|       |   ├── Customer.class
+|       |   ├── CustomerDAO.class
+|       |   ├── CustOrder.class
+|       |   ├── CustOrderDAO.class
+|       |   ├── Employee.class
+|       |   ├── EmployeeDAO.class 
+|       |   ├── Product.class
+|       |   └── ProductDAO.class
+|       |
+|       └── _control
+|           ├── CartCon.class 
+|           ├── CheckoutCon.class 
+|           ├── DelCartCon.class
+|           ├── EmpCustListCon.class
+|           ├── EmpOrderListCon.class
+|           ├── EmpProdCon.class 
+|           ├── LoginCon.class
+|           ├── LoginEmpCon.class 
+|           ├── LogoutCon.class
+|           ├── MyCartCon.class
+|           ├── MyPageCon.class
+|           ├── ProdListCon.class
+|           ├── RegisterCon.class
+|           └── RegisterModiCon.class
+|
 └── _WebContent
     ├── CustList.jps
     ├── CustMode.jps
