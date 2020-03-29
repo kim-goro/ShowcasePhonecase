@@ -30,7 +30,7 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 <br><br><br>
 
 ## 2.주요 메소드 및 기능
-> # 회원가입 및 로그인
+> ### 회원가입 및 로그인
 ```javascript
 <script>
 	function openUser(option) {
