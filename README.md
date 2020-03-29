@@ -258,7 +258,7 @@ public void orderAllItems(String customerId) throws Exception {
 	}
 }
 ```
-`결제하기` 버튼을 누르면 `CustomerId`에 해당하는 `Cart`의 모든 쿼리셋을 지우고 `CustORder'에 삽입합니다.
+`결제하기` 버튼을 누르면 `CustomerId`에 해당하는 `Cart`의 모든 쿼리셋을 지우고 `CustOrder'에 삽입합니다.
 
 <br><br><br>
 ## 3.구조
