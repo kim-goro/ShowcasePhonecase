@@ -6,6 +6,7 @@
 * jdk-14
 * (oracleDB & Toad) -> MariaDB
 
+
 > Cafe24 호스팅
 * Tomcat 8.0.x 
 * JSP 2.3 
@@ -13,16 +14,11 @@
 * Open JDK 1.8.x 
 * MariaDB 10.1.x UTF-8
 
+
 > 개발기간 
 * 2020-03-20 ~ 2020-03-29
-
-> hosting url
-* http://aa5505.cafe24.com/OnlinePhonecaseShopping/Index.jsp
-
-> git repo
-* https://github.com/kim-goro/ShowcasePhonecase
-
-* png, json 쌍이 있는 파일들만 선별
+* hosting url : http://aa5505.cafe24.com/OnlinePhonecaseShopping/Index.jsp
+* git repo : https://github.com/kim-goro/ShowcasePhonecase
 
 ## 2.구현부
 
