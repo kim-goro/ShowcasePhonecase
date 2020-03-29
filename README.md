@@ -10,6 +10,11 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 * Apache-tomcat-9.0.33
 * jdk-14
 * (oracleDB & Toad) -> MariaDB
+* External Jar :
+	* mariadb-java-client-2.5.4
+	* mariadb-java-client-2.6.0-javadoc
+	* jstl
+	* standard
 
 > Cafe24 구성
 * Tomcat 8.0.x
