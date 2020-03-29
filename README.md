@@ -81,9 +81,9 @@ _OnlinePhonecaseShopping
 
 > 모델링
 
-| Header One | Header Two | Header Three | Header Four |
-| ---------- | :--------- | :----------: | ----------: |
-| Default    | Left       | Center       | Right       |
+| Field | Type | Null | Key | Default | Extra |
+| ---------- | :--------- | :----------: | ----------: | ----------: | ----------: |
+| Default    | Left       | Center       | Right       | Right       | Right       |
 
 <br><br>
 > 메소드 및 Bean클래스
