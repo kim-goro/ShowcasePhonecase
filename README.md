@@ -25,6 +25,9 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 
 ## 2.구현부
 > 주요 메소드 및 기능
+
+## 3.구조
+> 디렉토리
 ```
 _OnlinePhonecaseShopping
 |
@@ -92,17 +95,48 @@ _OnlinePhonecaseShopping
 | quantity | int(11) | YES |    | NULL |    |
 | price | double | YES |    | NULL |    |
 
-* Cart
+* Employee
 
 | Field | Type | Null | Key | Default | Extra |
 | ----: | :--: | :--: | :-: | :-----: | :---: |
-| CartNo | int(11) | NO | PRI | NULL | auto-increment |
+| empNo | int(11) | NO | PRI | NULL | auto-increment |
+| employeeId | varchar(60) | NO |    | NULL |    |
+| username | varchar(30) | NO |    | NULL |    |
+| userpwd | varchar(30) | NO |    | NULL |    |
+
+* Customer
+
+| Field | Type | Null | Key | Default | Extra |
+| ----: | :--: | :--: | :-: | :-----: | :---: |
+| customerNo | int(11) | NO | PRI | NULL | auto-increment |
+| customerId | varchar(61) | YES |    | NULL |    |
+| username | varchar(30) | YES |    | NULL |    |
+| userpwd | varchar(30) | YES |    | NULL |    |
+| address | varchar(100) | YES |    | NULL |    |
+| postalCode | varchar(10) | YES |    | NULL |    |
+
+* CustOrder
+
+| Field | Type | Null | Key | Default | Extra |
+| ----: | :--: | :--: | :-: | :-----: | :---: |
+| orderId | int(11) | NO | PRI | NULL | auto-increment |
 | itemId | int(11) | YES |    | NULL |    |
 | itemName | varchar(100) | YES |    | NULL |    |
-| csutomerId | varchar(100) | YES |    | NULL |    |
+| cutomerId | varchar(100) | YES |    | NULL |    |
 | device | varchar(100) | YES |    | NULL |    |
 | quantity | int(11) | YES |    | NULL |    |
 | price | double | YES |    | NULL |    |
+| orderStatus | varchar(100) | YES |    | NULL |    |
+| orderdate | date | YES |    | NULL |    |
 
-<br><br>
-> 메소드 및 Bean클래스
+* Product
+
+| Field | Type | Null | Key | Default | Extra |
+| ----: | :--: | :--: | :-: | :-----: | :---: |
+| itemId | int(11) | NO | PRI | NULL | auto-increment |
+| itemName | varchar(50) | YES |    | NULL |    |
+| category | varchar(30) | YES |    | NULL |    |
+| device | varchar(30) | YES |    | NULL |    |
+| quantity | int(11) | YES |    | NULL |    |
+| price | int(20) | YES |    | NULL |    |
+| content | varchar(300) | YES |    | NULL |    |
