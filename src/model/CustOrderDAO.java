@@ -39,21 +39,20 @@ public class CustOrderDAO {
 					+ "' ORDER BY cartNo ASC";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
+			System.out.print("Error1");
 			while (rs.next()) {
-				try {
-					String innerSql = "INSERT INTO CustOrder (itemId,customerId,device,quantity,price,orderStatus,Orderdate) "
-							+ "values (?,'" + customerId + "',?,?,?,'"
-									+ "Order Placed',sysdate)";
-					pstmt = con.prepareStatement(innerSql);
-					pstmt.setInt(1, rs.getInt(1));
-					pstmt.setString(2, rs.getString(2));
-					pstmt.setInt(3, rs.getInt(3));
-					pstmt.setDouble(4, rs.getDouble(4));
-					pstmt.executeUpdate();
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				System.out.print("Error2");
+				String innerSql = "INSERT INTO CustOrder (itemId,customerId,device,quantity,price,orderStatus,Orderdate) "
+						+ "values (?,'" + customerId + "',?,?,?,'"
+								+ "Order Placed',now())";
+				pstmt = con.prepareStatement(innerSql);
+				pstmt.setInt(1, rs.getInt(1));
+				pstmt.setString(2, rs.getString(2));
+				pstmt.setInt(3, rs.getInt(3));
+				pstmt.setDouble(4, rs.getDouble(4));
+				pstmt.executeUpdate();
+				con.close();
+				System.out.print("Error3");
 			}
 			con.close();
 		} catch (Exception e) {

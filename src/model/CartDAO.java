@@ -37,19 +37,7 @@ public class CartDAO {
 			throws Exception {
 		try {
 			getCon();
-			String sql = "SELECT * FROM Cart WHERE itemId=? AND cutomerId=?";
-			pstmt.setInt(1, itemId);
-			pstmt.setString(2, customerId);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				sql = "UPDATE Cart SET quantity=quantity+"+quantity
-						+" WHERE itemId=? AND cutomerId=?";
-				pstmt.setInt(1, itemId);
-				pstmt.setString(2, customerId);
-				pstmt.executeUpdate();
-			}
-			else {
-				sql = "INSERT INTO Cart (itemId,itemName,customerId,device,quantity,price) "
+			String sql = "INSERT INTO Cart (itemId,itemName,customerId,device,quantity,price) "
 						+ "VALUES (?,?,?,?,?,?)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, itemId);
@@ -59,7 +47,6 @@ public class CartDAO {
 				pstmt.setInt(5, quantity);
 				pstmt.setDouble(6, price);
 				pstmt.executeUpdate();
-			}
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -113,8 +100,9 @@ public class CartDAO {
 	public void delAllRows(String customerId) throws Exception {
 		try {
 			getCon();
-			String sql = "DELETE FROM Cart WHERE customerId='\" + customerId + \"'\"";
+			String sql = "DELETE FROM Cart WHERE customerId=?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, customerId);
 			pstmt.executeUpdate();
 			con.close();
 		} catch (Exception e) {

@@ -35,6 +35,7 @@ public class CartCon extends HttpServlet {
 		Product product = new Product();
 		try {
 			product = productDao.searchProduct(itemId);
+			System.out.println("CartCon.do : "+product.getItemName()+"의 재고가 "+product.getQuantity()+"개 남았습니다.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -42,10 +43,10 @@ public class CartCon extends HttpServlet {
 		CartDAO cartDao = new CartDAO();
 		try {
 			cartDao.addRow(product.getItemId(), product.getItemName(), customerId, product.getDevice(), 1, product.getPrice());
+			System.out.println("CartCon.do : "+category+"에 "+product.getItemName()+"를 카트에 담았습니다.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("CartCon.do : "+category+"/"+customerId+"/"+itemId+"/를 카트에 담았습니다.");
 		request.setAttribute("category", null);
 		getServletContext().getRequestDispatcher("/ProdListCon.do?category="+category).forward(request, response);
 	}
