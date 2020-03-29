@@ -1,5 +1,7 @@
-## 1.개발환경
+# README.md
+Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하였습니다.  
 
+## 1.개발환경
 > 개발환경
 * Eclipse IDE 2020-03 
 * Apache-tomcat-9.0.33 
