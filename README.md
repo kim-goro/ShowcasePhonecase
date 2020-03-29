@@ -30,8 +30,7 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 <br><br><br>
 
 ## 2.주요 메소드 및 기능
-> 회원가입 및 로그인
-
+> # 회원가입 및 로그인
 ```javascript
 <script>
 	function openUser(option) {
@@ -89,8 +88,9 @@ if (category.equals("Customer")) {
 ```
 POST로 넘겨받은 `category`를 통해 Customer과 Employee로 구분합니다.  
 쿼리문 실패 시 `Msg`를 반환하고 성공 시 `HttpSession`을 저장합니다.  
+<br><br><br>
 
-> 상품 등록
+> # 상품 등록
 ```
 if(mode.equals("new")) {
 	 itemName = request.getParameter("itemName");
@@ -134,9 +134,9 @@ if(mode.equals("new")) {
 }	 
 ```
 `EmpProdForm.jsp`에서 Request를 받은 `EmpProdCon.do`에서 전달받은 `mod`를 확인하여 신규, 삭제, 수정, 검색을 실행합니다.  
+<br><br><br>
 
-
-> 장바구니 담기, 결제하기
+> # 장바구니 담기, 결제하기
 ```javascript
 <script>
 	// 카트에 담기
@@ -223,7 +223,7 @@ public ArrayList<CustOrder> listAllOrder() throws Exception {
 
 <br><br><br>
 ## 3.구조
-> 디렉토리
+> # 디렉토리
 ```
 _OnlinePhonecaseShopping
 |
