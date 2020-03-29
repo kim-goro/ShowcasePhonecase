@@ -92,5 +92,17 @@ _OnlinePhonecaseShopping
 | quantity | int(11) | YES |    | NULL |    |
 | price | double | YES |    | NULL |    |
 
+* Cart
+
+| Field | Type | Null | Key | Default | Extra |
+| ----: | :--: | :--: | :-: | :-----: | :---: |
+| CartNo | int(11) | NO | PRI | NULL | auto-increment |
+| itemId | int(11) | YES |    | NULL |    |
+| itemName | varchar(100) | YES |    | NULL |    |
+| csutomerId | varchar(100) | YES |    | NULL |    |
+| device | varchar(100) | YES |    | NULL |    |
+| quantity | int(11) | YES |    | NULL |    |
+| price | double | YES |    | NULL |    |
+
 <br><br>
 > 메소드 및 Bean클래스
