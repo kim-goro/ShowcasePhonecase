@@ -7,10 +7,10 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 <br>
 > 개발환경
 <br><br>
-* Eclipse IDE 2020-03 
-* Apache-tomcat-9.0.33 
-* jdk-14
-* (oracleDB & Toad) -> MariaDB    
+* Eclipse IDE 2020-03 <br>
+* Apache-tomcat-9.0.33 <br>
+* jdk-14<br>
+* (oracleDB & Toad) -> MariaDB <br> 
 <br>
 > Cafe24 호스팅
 <br><br>
