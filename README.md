@@ -80,8 +80,8 @@ _OnlinePhonecaseShopping
 ```
 
 > 모델링
-| Cart |
-| ---- |
+* Cart
+
 | Field | Type | Null | Key | Default | Extra |
 | ----: | :--: | :--: | :-: | :-----: | :---: |
 | CartNo | int(11) | NO | PRI | NULL | auto-increment |
