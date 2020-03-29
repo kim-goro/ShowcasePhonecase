@@ -92,6 +92,8 @@ POST로 넘겨받은 `category`를 통해 Customer과 Employee로 구분합니�
 <br><br><br>
 
 > ### 상품 등록
+![ex_screenshot](./img/Form.JPG)
+![ex_screenshot](./img/List.JPG)
 ```
 if(mode.equals("new")) {
 	 itemName = request.getParameter("itemName");
@@ -138,6 +140,7 @@ if(mode.equals("new")) {
 <br><br><br>
 
 > ### 장바구니 담기, 결제하기
+![ex_screenshot](./img/InCart.JPG)
 ```javascript
 <script>
 	// 카트에 담기
@@ -191,7 +194,10 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 }
 
 ```
-`ProdList.jsp`에서 출력된 상품의 장바구니 버튼을 누르면 확인창을 띄우고 `CartCon.do`에 id = `cartForm`의 `itemId`을 넘겨줍니다.  
+`ProdList.jsp`에서 출력된 상품의 장바구니 버튼을 누르면 확인창을 띄우고 `CartCon.do`에 id = `cartForm`의 `itemId`을 넘겨줍니다. 
+
+
+![ex_screenshot](./img/order.JPG)
 ```
 public ArrayList<CustOrder> listAllOrder() throws Exception {
 	ArrayList<CustOrder> orderList = new ArrayList<CustOrder>();
@@ -221,6 +227,38 @@ public ArrayList<CustOrder> listAllOrder() throws Exception {
 	}
 ```
 장바구니 탭을 누르면 `MyCartCon.do`에서  `CustOrderDAO` 쿼리문을 통해 장바구니 리스트를 가져옵니다.  
+
+![ex_screenshot](./img/result.JPG)
+```
+public void orderAllItems(String customerId) throws Exception {
+	try {
+		getCon();
+		String sql = "SELECT itemId, device, quantity, price FROM Cart WHERE customerId ='" + customerId
+				+ "' ORDER BY cartNo ASC";
+		pstmt = con.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		System.out.print("Error1");
+		while (rs.next()) {
+			System.out.print("Error2");
+			String innerSql = "INSERT INTO CustOrder (itemId,customerId,device,quantity,price,orderStatus,Orderdate) "
+					+ "values (?,'" + customerId + "',?,?,?,'"
+							+ "Order Placed',now())";
+			pstmt = con.prepareStatement(innerSql);
+			pstmt.setInt(1, rs.getInt(1));
+			pstmt.setString(2, rs.getString(2));
+			pstmt.setInt(3, rs.getInt(3));
+			pstmt.setDouble(4, rs.getDouble(4));
+			pstmt.executeUpdate();
+			con.close();
+			System.out.print("Error3");
+		}
+		con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+```
+`결제하기` 버튼을 누르면 `CustomerId`에 해당하는 `Cart`의 모든 쿼리셋을 지우고 `CustORder'에 삽입합니다.
 
 <br><br><br>
 ## 3.구조
