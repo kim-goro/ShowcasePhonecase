@@ -50,7 +50,7 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 	});
 </script>
 ```
-`RegiterForm.jsp'에서 작성한 Form은 간단한 Validation을 거친 후 `RegisterCon.do` 서블릿으로 넘겨줍니다.
+`RegiterForm.jsp`에서 작성한 Form은 간단한 Validation을 거친 후 `RegisterCon.do` 서블릿으로 넘겨줍니다.
 
 
 ## 3.구조
