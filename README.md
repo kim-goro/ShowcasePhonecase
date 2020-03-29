@@ -1,6 +1,6 @@
 # README.md
 Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하였습니다.  
-~~현재 카페24 Access문제로 쿼리문 실행에 에러가 있습니다.~~
+~~현재 카페24 Access문제로 계정 접속에 가 있습니다.~~
 <br><br><br>
 
 
@@ -83,10 +83,140 @@ if (category.equals("Customer")) {
 	}
 ```
 POST로 넘겨받은 `category`를 통해 Customer과 Employee로 구분합니다.  
-쿼리문 실패 시 `Msg`를 반환하고 성공 시 `HttpSession`을 저장합니다. 
+쿼리문 실패 시 `Msg`를 반환하고 성공 시 `HttpSession`을 저장합니다.  
+
+> 상품 등록
+```
+if(mode.equals("new")) {
+	 itemName = request.getParameter("itemName");
+	 category = request.getParameter("category");
+	 device = request.getParameter("device");
+	 content = request.getParameter("content");
+	 quantity = Integer.parseInt(request.getParameter("quantity"));
+	 price = Double.parseDouble(request.getParameter("price"));
+	 productDao.addRow( itemName, category, device, quantity, price, content);
+	System.out.println("EmpProdCon.do : "+category+"에 '"+itemName+"'등록을 완료하였습니다.");
+	response.sendRedirect("ProdListCon.do");
+// delete data
+}else if(mode.equals("del")) {
+	itemId = Integer.parseInt(request.getParameter("itemId"));
+	category = request.getParameter("category");
+	productDao.delRow(itemId);
+	System.out.println("EmpProdCon.do : "+category+"에 '"+itemId+"'번째 품목을 삭제하였습니다.");
+	request.setAttribute(category, null);
+	getServletContext().getRequestDispatcher("/ProdListCon.do").forward(request, response);
+// update data
+}else if(mode.equals("edit")) {
+	 itemId = Integer.parseInt(request.getParameter("itemId"));
+	 itemName = request.getParameter("itemName");
+	 category = request.getParameter("category");
+	 device = request.getParameter("device");
+	 content = request.getParameter("content");
+	 quantity = Integer.parseInt(request.getParameter("quantity"));
+	 price = Double.parseDouble(request.getParameter("price"));
+	 productDao.updateRow( itemId, itemName, category, device, quantity, price, content);
+	request.setAttribute(category, null);
+	System.out.println("EmpProdCon.do : "+category+"에 '"+itemName+"'수정을 완료하였습니다.");
+	getServletContext().getRequestDispatcher("/ProdListCon.do?category="+category).forward(request, response);
+// to search data for edit-page 
+}else if(mode.equals("search")) {
+	itemId = Integer.parseInt(request.getParameter("itemId"));
+	Product product = productDao.searchProduct(itemId);
+	request.setAttribute("mode", "edit");   //  should be changed to edit mode
+	request.setAttribute("product", product);
+	System.out.println("EmpProdCon.do : '"+itemName+"'검색을 완료하였습니다.");
+	getServletContext().getRequestDispatcher("/EmpProdForm.jsp").forward(request, response);
+}	 
+```
+`EmpProdForm.jsp`에서 Request를 받은 `EmpProdCon.do`에서 전달받은 `mod`를 확인하여 신규, 삭제, 수정, 검색을 실행합니다.  
 
 
+> 장바구니 담기, 결제하기
+```javascript
+<script>
+	// 카트에 담기
+	function addCart(itemId, itemName) {
+		document.getElementById('modal_item_title').innerHTML = itemName;
+		document.cartForm.itemId.value = itemId;
+		$('#myModal').modal('show');
+		return;
+	}
+	// 확인문 띄우기
+	function submitCart() {
+		$('#myModal').modal('toggle');
+		document.cartForm.submit();
+	}
+	$('#myModal').on('shown.bs.modal', function() {
+		$('#myInput').trigger('focus')
+	})
+	// form을 edit info로
+	function moveEditPage(itemId, mode) {
+		var form = document.listForm;
+		form.mode.value = mode;
+		form.itemId.value = itemId;
+		form.submit();
+	}
+</script>
+```
+```
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	request.setCharacterEncoding("UTF-8");
+	String category = request.getParameter("category");
+	String customerId = request.getParameter("customerId");
+	String itemId = request.getParameter("itemId");
+	ProductDAO productDao = new ProductDAO();
+	Product product = new Product();
+	try {
+		product = productDao.searchProduct(itemId);
+		System.out.println("CartCon.do : "+product.getItemName()+"의 재고가 "+product.getQuantity()+"개 남았습니다.");
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	// add to cart
+	CartDAO cartDao = new CartDAO();
+	try {
+		cartDao.addRow(product.getItemId(), product.getItemName(), customerId, product.getDevice(), 1, product.getPrice());
+		System.out.println("CartCon.do : "+category+"에 "+product.getItemName()+"를 카트에 담았습니다.");
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	request.setAttribute("category", null);
+	getServletContext().getRequestDispatcher("/ProdListCon.do?category="+category).forward(request, response);
+}
 
+```
+`ProdList.jsp`에서 출력된 상품의 장바구니 버튼을 누르면 확인창을 띄우고 `CartCon.do`에 id = `cartForm`의 `itemId`을 넘겨줍니다.  
+```
+public ArrayList<CustOrder> listAllOrder() throws Exception {
+	ArrayList<CustOrder> orderList = new ArrayList<CustOrder>();
+	try {
+		getCon();
+		String sql = "SELECT o.orderID, o.itemId, o.customerId, o.device, o.quantity, o.price, o.orderStatus, o.orderdate, p.itemName "
+				+ " FROM CustOrder o, Product p " + " WHERE o.itemId = p.itemId " + " ORDER BY o.orderId ASC";
+		pstmt = con.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		while (rs.next()) {
+			CustOrder order = new CustOrder();
+			order.setOrderId(rs.getInt(1));
+			order.setItemId(rs.getInt(2));
+			order.setCustomerId(rs.getString(3));
+			order.setDevice(rs.getString(4));
+			order.setQuantity(rs.getInt(5));
+			order.setPrice(rs.getDouble(6));
+			order.setOrderStatus(rs.getString(7));
+			order.setItemName(rs.getString(9));
+			orderList.add(order);
+		}
+		con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return orderList;
+	}
+```
+장바구니 탭을 누르면 `MyCartCon.do`에서  `CustOrderDAO` 쿼리문을 통해 장바구니 리스트를 가져옵니다.  
+
+<br><br><br>
 ## 3.구조
 > 디렉토리
 ```
