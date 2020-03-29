@@ -50,7 +50,41 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 	});
 </script>
 ```
-`RegiterForm.jsp`에서 작성한 Form은 간단한 Validation을 거친 후 `RegisterCon.do` 서블릿으로 넘겨줍니다.
+`RegiterForm.jsp`에서 작성한 Form은 간단한 Validation을 거친 후 `RegisterCon.do` 서블릿으로 넘겨줍니다.  
+
+```Java
+if (category.equals("Customer")) {
+	String address = request.getParameter("address");
+	String postalCode = request.getParameter("postalCode");
+	String innerSql = "INSERT INTO Customer " + " (customerId, userName, userpwd, address, postalCode) values (?,?,?,?,?)";
+	pstmt = con.prepareStatement(innerSql);
+	pstmt.setString(1, email);
+	pstmt.setString(2, userName);
+	pstmt.setString(3, pwd);
+	pstmt.setString(4, address);
+	pstmt.setString(5, postalCode);
+	int chk = pstmt.executeUpdate();
+	if (chk == 0) {
+		//가입 실패 시
+		request.setAttribute("Msg", "fail");
+		nextPage = "/RegisterForm.jsp";
+	} else {
+		Customer customer = new Customer();
+		customer.setCustomerId(email);
+		customer.setUserName(userName);
+		customer.setUserPwd(pwd);
+		customer.setAddress(address);
+		customer.setPostalCode(postalCode);
+		// session
+		HttpSession session = request.getSession();
+		session.setAttribute("userType", "customer");
+		session.setAttribute("customer", customer);
+		nextPage = "/RegisterCust.jsp";
+	}
+```
+POST로 넘겨받은 `category`를 통해 Customer과 Employee로 구분합니다.  
+쿼리문 실패 시 `Msg`를 반환하고 성공 시 `HttpSession`을 저장합니다. 
+
 
 
 ## 3.구조
