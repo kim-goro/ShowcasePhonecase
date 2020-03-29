@@ -227,8 +227,7 @@ public ArrayList<CustOrder> listAllOrder() throws Exception {
 	}
 ```
 장바구니 탭을 누르면 `MyCartCon.do`에서  `CustOrderDAO` 쿼리문을 통해 장바구니 리스트를 가져옵니다.  
-<br>
-![ex_screenshot](./img/result.JPG)
+<br><br>
 ```
 public void orderAllItems(String customerId) throws Exception {
 	try {
