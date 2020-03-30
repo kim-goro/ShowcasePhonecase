@@ -88,6 +88,7 @@ RegisterForm.jsp
 </script>
 ```
 `RegiterForm.jsp`에서 작성한 Form은 간단한 Validation을 거친 후 `RegisterCon.do` 서블릿으로 넘겨줍니다.  
+<br><br>
 
 ```Java
 RegisterCon.java
