@@ -1,7 +1,7 @@
 # README.md
 Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하였습니다.  
 ~~현재 카페24 계정Access 문제로 쿼리실행에 에러가 있습니다.~~
-```
+```Java
 server.xml //Connection pool
 <Context docBase="OnlinePhonecaseShopping" path="/OnlinePhonecaseShopping" reloadable="true" source="org.eclipse.jst.jee.server:OnlinePhonecaseShopping">
       <!-- <Resource 
