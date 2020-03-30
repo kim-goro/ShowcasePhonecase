@@ -2,7 +2,7 @@
 Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하였습니다.  
 ~~현재 카페24 계정Access 문제로 쿼리실행에 에러가 있습니다.~~
 ```Java
-server.xml //Connection pool
+//server.xml : Connection pool
 <Context docBase="OnlinePhonecaseShopping" path="/OnlinePhonecaseShopping" reloadable="true" source="org.eclipse.jst.jee.server:OnlinePhonecaseShopping">
       <!-- <Resource 
       name="jdbc/pool" 
@@ -64,7 +64,7 @@ server.xml //Connection pool
 > ### 회원가입 및 로그인
 ![ex_screenshot](./img/main.JPG)
 ```javascript
-RegisterForm.jsp
+// RegisterForm.jsp
 <script>
 	function openUser(option) {
 		document.getElementById("custInfo").style.display = option;
@@ -91,7 +91,7 @@ RegisterForm.jsp
 <br><br>
 
 ```Java
-RegisterCon.java
+// RegisterCon.java
 if (category.equals("Customer")) {
 	String address = request.getParameter("address");
 	String postalCode = request.getParameter("postalCode");
@@ -129,7 +129,7 @@ POST로 넘겨받은 `category`를 통해 Customer과 Employee로 구분합니�
 ![ex_screenshot](./img/Form.JPG)
 ![ex_screenshot](./img/List.JPG)
 ```java
-EmpProdCon.java
+// EmpProdCon.java
 if(mode.equals("new")) {
 	 itemName = request.getParameter("itemName");
 	 category = request.getParameter("category");
@@ -177,7 +177,7 @@ if(mode.equals("new")) {
 > ### 장바구니 담기, 결제하기
 ![ex_screenshot](./img/InCart.JPG)
 ```javascript
-ProdList.jsp
+// ProdList.jsp
 <script>
 	// 카트에 담기
 	function addCart(itemId, itemName) {
@@ -204,7 +204,7 @@ ProdList.jsp
 </script>
 ```
 ```java
-CartCon.java
+// CartCon.java
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	request.setCharacterEncoding("UTF-8");
 	String category = request.getParameter("category");
@@ -236,7 +236,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 ![ex_screenshot](./img/order.JPG)
 ```java
-MyCartCon.java
+// MyCartCon.java
 public ArrayList<CustOrder> listAllOrder() throws Exception {
 	ArrayList<CustOrder> orderList = new ArrayList<CustOrder>();
 	try {
@@ -268,7 +268,7 @@ public ArrayList<CustOrder> listAllOrder() throws Exception {
 <br><br>
 ![ex_screenshot](./img/resultOrder.JPG)
 ```java
-CustOrderDAO.java
+// CustOrderDAO.java
 public void orderAllItems(String customerId) throws Exception {
 	try {
 		getCon();
