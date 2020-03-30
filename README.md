@@ -127,7 +127,7 @@ POST로 넘겨받은 `category`를 통해 Customer과 Employee로 구분합니�
 > ### 상품 등록
 ![ex_screenshot](./img/Form.JPG)
 ![ex_screenshot](./img/List.JPG)
-```
+```java
 EmpProdCon.java
 if(mode.equals("new")) {
 	 itemName = request.getParameter("itemName");
@@ -202,7 +202,7 @@ ProdList.jsp
 	}
 </script>
 ```
-```
+```java
 CartCon.java
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	request.setCharacterEncoding("UTF-8");
@@ -234,7 +234,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 
 ![ex_screenshot](./img/order.JPG)
-```
+```java
 MyCartCon.java
 public ArrayList<CustOrder> listAllOrder() throws Exception {
 	ArrayList<CustOrder> orderList = new ArrayList<CustOrder>();
@@ -266,7 +266,7 @@ public ArrayList<CustOrder> listAllOrder() throws Exception {
 장바구니 탭을 누르면 `MyCartCon.do`에서  `CustOrderDAO` 쿼리문을 통해 장바구니 리스트를 가져옵니다.  
 <br><br>
 ![ex_screenshot](./img/resultOrder.JPG)
-```
+```java
 CustOrderDAO.java
 public void orderAllItems(String customerId) throws Exception {
 	try {
