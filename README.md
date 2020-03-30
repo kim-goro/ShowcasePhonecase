@@ -231,7 +231,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 ```
 `ProdList.jsp`에서 출력된 상품의 장바구니 버튼을 누르면 확인창을 띄우고 `CartCon.do`에 id = `cartForm`의 `itemId`을 넘겨줍니다. 
-
+<br><br>
 
 ![ex_screenshot](./img/order.JPG)
 ```java
