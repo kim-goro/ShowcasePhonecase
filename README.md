@@ -1,6 +1,37 @@
 # README.md
 Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하였습니다.  
 ~~현재 카페24 계정Access 문제로 쿼리실행에 에러가 있습니다.~~
+```
+server.xml //Connection pool
+<Context docBase="OnlinePhonecaseShopping" path="/OnlinePhonecaseShopping" reloadable="true" source="org.eclipse.jst.jee.server:OnlinePhonecaseShopping">
+      <!-- <Resource 
+      name="jdbc/pool" 
+      auth="Container" 
+      type="javax.sql.DataSource"
+    factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+    driverClassName="org.mariadb.jdbc.Driver"
+    url="jdbc:mariadb://localhost:3306/*?autoReconnect=true"
+    username="*" 
+    password="*" 
+    maxActive="100" 
+    maxIdle="30" 
+    maxWait="10000"
+    removeAbandoned="true" 
+    removeAbandonedTimeout="60"/>  -->
+    <Resource 
+      	name="jdbc/pool" 
+ 		type="javax.sql.DataSource"
+ 		auth="Container"
+ 		maxActive="30"
+ 		maxIdle="3"
+ 		maxWait="3000"
+ 		username="root"
+ 		password="1234"
+ 		testOnBorrow="true"
+ 		driverClassName="com.mysql.cj.jdbc.Driver"
+ 		url="jdbc:mysql://localhost:3306/phcase?serverTimezone=UTC"
+ 		/></Context>
+```
 <br><br><br>
 
 
@@ -33,6 +64,7 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 > ### 회원가입 및 로그인
 ![ex_screenshot](./img/main.JPG)
 ```javascript
+RegisterForm.jsp
 <script>
 	function openUser(option) {
 		document.getElementById("custInfo").style.display = option;
@@ -58,6 +90,7 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 `RegiterForm.jsp`에서 작성한 Form은 간단한 Validation을 거친 후 `RegisterCon.do` 서블릿으로 넘겨줍니다.  
 
 ```Java
+RegisterCon.java
 if (category.equals("Customer")) {
 	String address = request.getParameter("address");
 	String postalCode = request.getParameter("postalCode");
@@ -95,6 +128,7 @@ POST로 넘겨받은 `category`를 통해 Customer과 Employee로 구분합니�
 ![ex_screenshot](./img/Form.JPG)
 ![ex_screenshot](./img/List.JPG)
 ```
+EmpProdCon.java
 if(mode.equals("new")) {
 	 itemName = request.getParameter("itemName");
 	 category = request.getParameter("category");
@@ -142,6 +176,7 @@ if(mode.equals("new")) {
 > ### 장바구니 담기, 결제하기
 ![ex_screenshot](./img/InCart.JPG)
 ```javascript
+ProdList.jsp
 <script>
 	// 카트에 담기
 	function addCart(itemId, itemName) {
@@ -168,6 +203,7 @@ if(mode.equals("new")) {
 </script>
 ```
 ```
+CartCon.java
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	request.setCharacterEncoding("UTF-8");
 	String category = request.getParameter("category");
@@ -199,6 +235,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 ![ex_screenshot](./img/order.JPG)
 ```
+MyCartCon.java
 public ArrayList<CustOrder> listAllOrder() throws Exception {
 	ArrayList<CustOrder> orderList = new ArrayList<CustOrder>();
 	try {
@@ -230,6 +267,7 @@ public ArrayList<CustOrder> listAllOrder() throws Exception {
 <br><br>
 ![ex_screenshot](./img/resultOrder.JPG)
 ```
+CustOrderDAO.java
 public void orderAllItems(String customerId) throws Exception {
 	try {
 		getCon();
