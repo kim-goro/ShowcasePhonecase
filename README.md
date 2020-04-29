@@ -460,7 +460,7 @@ CREATE TABLE Customer(
 
 > #### CustOrder
 
-```
+```mysql
 CREATE TABLE CustOrder(
 	orderId int(11) NOT NULL AUTO INCREMENT,
 	itemId int(11) NOT NULL,
@@ -479,7 +479,7 @@ CREATE TABLE CustOrder(
 
 > #### Product
 
-```
+```sql
 CREATE TABLE Product(
 	itemId int(11) NOT NULL AUTO INCREMENT,
 	itemName varchar(50) NOT NULL,
