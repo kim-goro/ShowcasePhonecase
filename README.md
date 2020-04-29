@@ -1,39 +1,40 @@
-> ## 참고서적
+> ### 참고서적
 - ### JSP 웹 쇼핑몰 프로젝트 프로그래밍(JSP WEB Programming) 
 	- https://www.udemy.com/course/jsp-web-programming/
   
 <br>
 
-> ## 목차
-## 개발환경 구축하기
-- [Nodejs와 NPM 설치](Nodejs와-NPM-설치)  
-- 웹 콘솔로 코드 실행하기  
-  
-<br>
+> ### 목차
+### 1.개발환경 구축하기
+- [1.개발환경 구축하기](#1.개발환경 구축하기)
+	- [개발환경](#개발환경)
+	- [Cafe24 구성](#Cafe24-구성)
+	- [학습 및 개발기간](#학습-및-개발기간)
 
-# 심화
-## 1. 데이터 타입
- - [데이터타입의 종류](#데이터타입의-종류)
- - [변수 선언과 데이터 할당](#변수-선언과-데이터-할당)
- - [불변 객체](#불변-객체)
- - [undefined와 null](#undefined와-null)
- - [데이터 타입에 관한 배경지식](#데이터-타입에-관한-배경지식)
+### 2.주요 메소드 및 기능
+- [2.주요 메소드 및 기능](#2.주요-메소드-및-기능)
+	- [회원가입 및 로그인](#회원가입-및-로그인)
+	- [상품 등록](#상품-등록)
+	- [장바구니 담기, 결제하기](#장바구니-담기,-결제하기)
+	- [커넥션 풀 설정](#커넥션-풀-설정)
 
-## 2. 실행 컨텍스트
- - [실행 컨텍스트](#실행-컨텍스트)
- - [활성화된 실행 컨텍스트의 수집 정보](#활성화된-실행-컨텍스트의-수집-정보)
- - [environmentRecord와 호이스팅](#environmentrecord와-호이스팅)
- - [호이스팅 규칙](#호이스팅-규칙)
- - [함수-선언문과-함수-표현식](#함수-선언문과-함수-표현식)
- - [스코프-체인](#스코프-체인)
+### 3.구조
+- [3.구조](#3.구조)
+	- [디렉토리](#디렉토리)
+	- [테이블](#테이블)
+		- [Cart](#Cart)
+		- [Employee](#Employee)
+		- [Customer](#Customer)
+		- [CustOrder](#CustOrder)
+		- [Product](#Product)
  
 
 <br><br>
 <br><br>
 
 
-# 1.개발환경 구축하기
-## 개발환경
+## 1.개발환경 구축하기
+### 개발환경
 * Eclipse IDE 2020-03
 * Apache-tomcat-9.0.33
 * jdk-14
@@ -46,7 +47,7 @@
 
 <br>
 
-## Cafe24 구성
+### Cafe24 구성
 * Tomcat 8.0.x
 * JSP 2.3
 * Servlet 3.1
@@ -55,7 +56,7 @@
 
 <br>
 
-## 학습 및 개발기간
+### 학습 및 개발기간
 - Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하였습니다.
 * 2020-03-20 ~ 2020-03-29
 * hosting url : http://aa5505.cafe24.com/OnlinePhonecaseShopping/Index.jsp
@@ -70,8 +71,8 @@
 
 
 
-# 2.주요 메소드 및 기능
-## 회원가입 및 로그인
+## 2.주요 메소드 및 기능
+### 회원가입 및 로그인
 ![ex_screenshot](./img/main.JPG)
 ```javascript
 // RegisterForm.jsp
@@ -137,7 +138,7 @@ POST로 넘겨받은 `category`를 통해 Customer과 Employee로 구분합니�
 
 <br>
 
-## 상품 등록
+### 상품 등록
 ![ex_screenshot](./img/Form.JPG)
 ![ex_screenshot](./img/List.JPG)
 ```java
@@ -187,7 +188,7 @@ if(mode.equals("new")) {
 
 <br>
 
-## 장바구니 담기, 결제하기
+### 장바구니 담기, 결제하기
 ![ex_screenshot](./img/InCart.JPG)
 ```javascript
 // ProdList.jsp
@@ -317,7 +318,7 @@ public void orderAllItems(String customerId) throws Exception {
 
 <br>
 
-## 커넥션 풀 설정
+### 커넥션 풀 설정
 ```Java
 //server.xml : Connection pool
 <Context docBase="OnlinePhonecaseShopping" path="/OnlinePhonecaseShopping" reloadable="true" source="org.eclipse.jst.jee.server:OnlinePhonecaseShopping">
@@ -356,8 +357,8 @@ public void orderAllItems(String customerId) throws Exception {
 
 
 
-# 3.구조
-## 디렉토리
+## 3.구조
+### 디렉토리
 ```
 _OnlinePhonecaseShopping
 |
@@ -413,8 +414,8 @@ _OnlinePhonecaseShopping
        └── TopNavLogin.jps
 ```
 
-## 테이블
-> ### Cart
+### 테이블
+> #### Cart
 ```
 CREATE TABLE Cart(
 	cartno int(11) NOT NULL AUTO INCREMENT,
@@ -430,7 +431,7 @@ CREATE TABLE Cart(
 )
 ```
 
-> ### Employee
+> #### Employee
 ```
 CREATE TABLE Employee(
 	empNo int(11) NOT NULL AUTO INCREMENT,
@@ -442,7 +443,7 @@ CREATE TABLE Employee(
 )
 ```
 
-> ### Customer
+> #### Customer
 
 ```
 CREATE TABLE Customer(
@@ -457,7 +458,7 @@ CREATE TABLE Customer(
 )
 ```
 
-> ### CustOrder
+> #### CustOrder
 
 ```
 CREATE TABLE CustOrder(
@@ -476,7 +477,7 @@ CREATE TABLE CustOrder(
 )
 ```
 
-> ### Product
+> #### Product
 
 ```
 CREATE TABLE Product(
