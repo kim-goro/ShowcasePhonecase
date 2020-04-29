@@ -416,7 +416,7 @@ _OnlinePhonecaseShopping
 
 ### 테이블
 > #### Cart
-```
+```sql
 CREATE TABLE Cart(
 	cartno int(11) NOT NULL AUTO INCREMENT,
 	itemId int(11) NOT NULL,
@@ -432,7 +432,7 @@ CREATE TABLE Cart(
 ```
 
 > #### Employee
-```
+```sql
 CREATE TABLE Employee(
 	empNo int(11) NOT NULL AUTO INCREMENT,
 	employeeId varchar(60) NOT NULL,
@@ -445,7 +445,7 @@ CREATE TABLE Employee(
 
 > #### Customer
 
-```
+```sql
 CREATE TABLE Customer(
 	customerNo int(11) NOT NULL AUTO INCREMENT,
 	customerId varchar(60) NOT NULL,
@@ -460,7 +460,7 @@ CREATE TABLE Customer(
 
 > #### CustOrder
 
-```mysql
+```sql
 CREATE TABLE CustOrder(
 	orderId int(11) NOT NULL AUTO INCREMENT,
 	itemId int(11) NOT NULL,
