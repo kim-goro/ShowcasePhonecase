@@ -28,37 +28,6 @@
  - [스코프-체인](#스코프-체인)
  
 
-```Java
-//server.xml : Connection pool
-<Context docBase="OnlinePhonecaseShopping" path="/OnlinePhonecaseShopping" reloadable="true" source="org.eclipse.jst.jee.server:OnlinePhonecaseShopping">
-      <!-- <Resource 
-      name="jdbc/pool" 
-      auth="Container" 
-      type="javax.sql.DataSource"
-    factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
-    driverClassName="org.mariadb.jdbc.Driver"
-    url="jdbc:mariadb://localhost:3306/*?autoReconnect=true"
-    username="*" 
-    password="*" 
-    maxActive="100" 
-    maxIdle="30" 
-    maxWait="10000"
-    removeAbandoned="true" 
-    removeAbandonedTimeout="60"/>  -->
-    <Resource 
-      	name="jdbc/pool" 
- 		type="javax.sql.DataSource"
- 		auth="Container"
- 		maxActive="30"
- 		maxIdle="3"
- 		maxWait="3000"
- 		username="root"
- 		password="1234"
- 		testOnBorrow="true"
- 		driverClassName="com.mysql.cj.jdbc.Driver"
- 		url="jdbc:mysql://localhost:3306/phcase?serverTimezone=UTC"
- 		/></Context>
-```
 <br><br>
 <br><br>
 
@@ -101,7 +70,7 @@
 
 
 
-## 2.주요 메소드 및 기능
+# 2.주요 메소드 및 기능
 ## 회원가입 및 로그인
 ![ex_screenshot](./img/main.JPG)
 ```javascript
@@ -345,6 +314,41 @@ public void orderAllItems(String customerId) throws Exception {
 }
 ```
 `결제하기` 버튼을 누르면 `CustomerId`에 해당하는 `Cart`의 모든 쿼리셋을 지우고 `CustOrder`에 삽입합니다.
+
+<br>
+
+## 커넥션 풀 설정
+```Java
+//server.xml : Connection pool
+<Context docBase="OnlinePhonecaseShopping" path="/OnlinePhonecaseShopping" reloadable="true" source="org.eclipse.jst.jee.server:OnlinePhonecaseShopping">
+      <!-- <Resource 
+      name="jdbc/pool" 
+      auth="Container" 
+      type="javax.sql.DataSource"
+    factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+    driverClassName="org.mariadb.jdbc.Driver"
+    url="jdbc:mariadb://localhost:3306/*?autoReconnect=true"
+    username="*" 
+    password="*" 
+    maxActive="100" 
+    maxIdle="30" 
+    maxWait="10000"
+    removeAbandoned="true" 
+    removeAbandonedTimeout="60"/>  -->
+    <Resource 
+      	name="jdbc/pool" 
+ 		type="javax.sql.DataSource"
+ 		auth="Container"
+ 		maxActive="30"
+ 		maxIdle="3"
+ 		maxWait="3000"
+ 		username="root"
+ 		password="1234"
+ 		testOnBorrow="true"
+ 		driverClassName="com.mysql.cj.jdbc.Driver"
+ 		url="jdbc:mysql://localhost:3306/phcase?serverTimezone=UTC"
+ 		/></Context>
+```
 
 <br><br>
 <br><br>
