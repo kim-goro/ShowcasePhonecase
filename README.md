@@ -1,4 +1,3 @@
-# README.md
 > ## 참고서적
 - ### JSP 웹 쇼핑몰 프로젝트 프로그래밍(JSP WEB Programming) 
 	- https://www.udemy.com/course/jsp-web-programming/
@@ -28,7 +27,7 @@
  - [함수-선언문과-함수-표현식](#함수-선언문과-함수-표현식)
  - [스코프-체인](#스코프-체인)
  
-Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하였습니다.  
+
 ```Java
 //server.xml : Connection pool
 <Context docBase="OnlinePhonecaseShopping" path="/OnlinePhonecaseShopping" reloadable="true" source="org.eclipse.jst.jee.server:OnlinePhonecaseShopping">
@@ -88,6 +87,7 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 <br>
 
 ## 학습 및 개발기간
+- Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하였습니다.
 * 2020-03-20 ~ 2020-03-29
 * hosting url : http://aa5505.cafe24.com/OnlinePhonecaseShopping/Index.jsp
 * git repo : https://github.com/kim-goro/ShowcasePhonecase    
@@ -390,22 +390,23 @@ _OnlinePhonecaseShopping
 |           └── RegisterModiCon.class
 |
 └── _WebContent
-    ├── CustList.jps
-    ├── CustMode.jps
-    ├── CustOrderList.jps 
-    ├── EmpProdForm.jps 
-    ├── Index.jps
-    ├── Login.jps
-    ├── LoginCustProd.jps
-    ├── LoginEmpProd.jps
-    ├── MyCart.jps 
-    ├── MyPage.jps 
-    ├── OrderList.jps 
-    ├── ProdList.jps 
-    ├── RegisterForm.jps
-    ├── RegisterModi.jps
-    ├── TopNav.jps 
-    └── TopNavLogin.jps
+    └──_WEB-INF
+       ├── CustList.jps
+       ├── CustMode.jps
+       ├── CustOrderList.jps 
+       ├── EmpProdForm.jps 
+       ├── Index.jps
+       ├── Login.jps
+       ├── LoginCustProd.jps
+       ├── LoginEmpProd.jps
+       ├── MyCart.jps 
+       ├── MyPage.jps 
+       ├── OrderList.jps 
+       ├── ProdList.jps 
+       ├── RegisterForm.jps
+       ├── RegisterModi.jps
+       ├── TopNav.jps 
+       └── TopNavLogin.jps
 ```
 
 ## 테이블
