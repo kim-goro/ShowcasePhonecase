@@ -1,6 +1,34 @@
 # README.md
+> ## 참고서적
+- ### JSP 웹 쇼핑몰 프로젝트 프로그래밍(JSP WEB Programming) 
+	- https://www.udemy.com/course/jsp-web-programming/
+  
+<br>
+
+> ## 목차
+## 개발환경 구축하기
+- [Nodejs와 NPM 설치](Nodejs와-NPM-설치)  
+- 웹 콘솔로 코드 실행하기  
+  
+<br>
+
+# 심화
+## 1. 데이터 타입
+ - [데이터타입의 종류](#데이터타입의-종류)
+ - [변수 선언과 데이터 할당](#변수-선언과-데이터-할당)
+ - [불변 객체](#불변-객체)
+ - [undefined와 null](#undefined와-null)
+ - [데이터 타입에 관한 배경지식](#데이터-타입에-관한-배경지식)
+
+## 2. 실행 컨텍스트
+ - [실행 컨텍스트](#실행-컨텍스트)
+ - [활성화된 실행 컨텍스트의 수집 정보](#활성화된-실행-컨텍스트의-수집-정보)
+ - [environmentRecord와 호이스팅](#environmentrecord와-호이스팅)
+ - [호이스팅 규칙](#호이스팅-규칙)
+ - [함수-선언문과-함수-표현식](#함수-선언문과-함수-표현식)
+ - [스코프-체인](#스코프-체인)
+ 
 Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하였습니다.  
-~~현재 카페24 계정Access 문제로 쿼리실행에 에러가 있습니다.~~
 ```Java
 //server.xml : Connection pool
 <Context docBase="OnlinePhonecaseShopping" path="/OnlinePhonecaseShopping" reloadable="true" source="org.eclipse.jst.jee.server:OnlinePhonecaseShopping">
@@ -32,11 +60,12 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
  		url="jdbc:mysql://localhost:3306/phcase?serverTimezone=UTC"
  		/></Context>
 ```
-<br><br><br>
+<br><br>
+<br><br>
 
 
-## 1.개발환경
-> 개발환경
+# 1.개발환경 구축하기
+## 개발환경
 * Eclipse IDE 2020-03
 * Apache-tomcat-9.0.33
 * jdk-14
@@ -47,21 +76,33 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 	* jstl
 	* standard
 
-> Cafe24 구성
+<br>
+
+## Cafe24 구성
 * Tomcat 8.0.x
 * JSP 2.3
 * Servlet 3.1
 * Open JDK 1.8.x
 * MariaDB 10.1.x UTF-8
 
-> 개발기간
+<br>
+
+## 학습 및 개발기간
 * 2020-03-20 ~ 2020-03-29
 * hosting url : http://aa5505.cafe24.com/OnlinePhonecaseShopping/Index.jsp
 * git repo : https://github.com/kim-goro/ShowcasePhonecase    
-<br><br><br>
+
+<br><br>
+<br><br>
+
+
+
+
+
+
 
 ## 2.주요 메소드 및 기능
-> ### 회원가입 및 로그인
+## 회원가입 및 로그인
 ![ex_screenshot](./img/main.JPG)
 ```javascript
 // RegisterForm.jsp
@@ -88,9 +129,10 @@ Jsp Model2 방식으로 CRUD기능을 구현한 간단한 쇼핑몰을 개발하
 </script>
 ```
 `RegiterForm.jsp`에서 작성한 Form은 간단한 Validation을 거친 후 `RegisterCon.do` 서블릿으로 넘겨줍니다.  
-<br><br>
 
-```Java
+<br>
+
+```java
 // RegisterCon.java
 if (category.equals("Customer")) {
 	String address = request.getParameter("address");
@@ -123,9 +165,10 @@ if (category.equals("Customer")) {
 ```
 POST로 넘겨받은 `category`를 통해 Customer과 Employee로 구분합니다.  
 쿼리문 실패 시 `Msg`를 반환하고 성공 시 `HttpSession`을 저장합니다.  
-<br><br><br>
 
-> ### 상품 등록
+<br>
+
+## 상품 등록
 ![ex_screenshot](./img/Form.JPG)
 ![ex_screenshot](./img/List.JPG)
 ```java
@@ -172,9 +215,10 @@ if(mode.equals("new")) {
 }	 
 ```
 `EmpProdForm.jsp`에서 Request를 받은 `EmpProdCon.do`에서 전달받은 `mod`를 확인하여 신규, 삭제, 수정, 검색을 실행합니다.  
-<br><br><br>
 
-> ### 장바구니 담기, 결제하기
+<br>
+
+## 장바구니 담기, 결제하기
 ![ex_screenshot](./img/InCart.JPG)
 ```javascript
 // ProdList.jsp
@@ -232,7 +276,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 ```
 `ProdList.jsp`에서 출력된 상품의 장바구니 버튼을 누르면 확인창을 띄우고 `CartCon.do`에 id = `cartForm`의 `itemId`을 넘겨줍니다. 
-<br><br>
+<br>
 
 ![ex_screenshot](./img/order.JPG)
 ```java
@@ -264,8 +308,11 @@ public ArrayList<CustOrder> listAllOrder() throws Exception {
 	return orderList;
 	}
 ```
+
 장바구니 탭을 누르면 `MyCartCon.do`에서  `CustOrderDAO` 쿼리문을 통해 장바구니 리스트를 가져옵니다.  
-<br><br>
+
+<br>
+
 ![ex_screenshot](./img/resultOrder.JPG)
 ```java
 // CustOrderDAO.java
@@ -297,11 +344,16 @@ public void orderAllItems(String customerId) throws Exception {
 	}
 }
 ```
-`결제하기` 버튼을 누르면 `CustomerId`에 해당하는 `Cart`의 모든 쿼리셋을 지우고 `CustOrder'에 삽입합니다.
+`결제하기` 버튼을 누르면 `CustomerId`에 해당하는 `Cart`의 모든 쿼리셋을 지우고 `CustOrder`에 삽입합니다.
 
-<br><br><br>
-## 3.구조
-> 디렉토리
+<br><br>
+<br><br>
+
+
+
+
+# 3.구조
+## 디렉토리
 ```
 _OnlinePhonecaseShopping
 |
@@ -356,61 +408,81 @@ _OnlinePhonecaseShopping
     └── TopNavLogin.jps
 ```
 
-> 모델링
-* Cart
+## 테이블
+> ### Cart
+```
+CREATE TABLE Cart(
+	cartno int(11) NOT NULL AUTO INCREMENT,
+	itemId int(11) NOT NULL,
+	itemName varchar(100) NOT NULL,
+	customerId varchar(100) NOT NULL,
+	device varchar(100) NOT NULL,
+	quantity int(11) DEFAULT '1',
+	price double NOT NULL,
+	PRIMARY KEY(cartno), 
+	UNIQUE KEY(itemId),
+	FOREIGN KEY (itemId) REFERENCES Product(itemId) ON UPDATE CASCADE
+)
+```
 
-| Field | Type | Null | Key | Default | Extra |
-| ----: | :--: | :--: | :-: | :-----: | :---: |
-| CartNo | int(11) | NO | PRI | NULL | auto-increment |
-| itemId | int(11) | YES |    | NULL |    |
-| itemName | varchar(100) | YES |    | NULL |    |
-| csutomerId | varchar(100) | YES |    | NULL |    |
-| device | varchar(100) | YES |    | NULL |    |
-| quantity | int(11) | YES |    | NULL |    |
-| price | double | YES |    | NULL |    |
+> ### Employee
+```
+CREATE TABLE Employee(
+	empNo int(11) NOT NULL AUTO INCREMENT,
+	employeeId varchar(60) NOT NULL,
+	username varchar(30) NOT NULL,
+	userpwd varchar(30) NOT NULL,
+	PRIMARY KEY(empNo), 
+	UNIQUE KEY(employeeId)
+)
+```
 
-* Employee
+> ### Customer
 
-| Field | Type | Null | Key | Default | Extra |
-| ----: | :--: | :--: | :-: | :-----: | :---: |
-| empNo | int(11) | NO | PRI | NULL | auto-increment |
-| employeeId | varchar(60) | NO |    | NULL |    |
-| username | varchar(30) | NO |    | NULL |    |
-| userpwd | varchar(30) | NO |    | NULL |    |
+```
+CREATE TABLE Customer(
+	customerNo int(11) NOT NULL AUTO INCREMENT,
+	customerId varchar(60) NOT NULL,
+	username varchar(30) NOT NULL,
+	userpwd varchar(30) NOT NULL,
+	address varchar(30) NOT NULL,
+	postalCode varchar(30) NOT NULL,
+	PRIMARY KEY(customerNo), 
+	UNIQUE KEY(customerId)
+)
+```
 
-* Customer
+> ### CustOrder
 
-| Field | Type | Null | Key | Default | Extra |
-| ----: | :--: | :--: | :-: | :-----: | :---: |
-| customerNo | int(11) | NO | PRI | NULL | auto-increment |
-| customerId | varchar(61) | YES |    | NULL |    |
-| username | varchar(30) | YES |    | NULL |    |
-| userpwd | varchar(30) | YES |    | NULL |    |
-| address | varchar(100) | YES |    | NULL |    |
-| postalCode | varchar(10) | YES |    | NULL |    |
+```
+CREATE TABLE CustOrder(
+	orderId int(11) NOT NULL AUTO INCREMENT,
+	itemId int(11) NOT NULL,
+	itemName varchar(100) NOT NULL,
+	cutomerId varchar(100) NOT NULL,
+	device varchar(100) NOT NULL,
+	quantity int(11) NOT NULL,
+	price int(20) NOT NULL,
+	orderStatus varchar(100) NOT NULL,
+	orderdate DATETIME DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY(customerNo), 
+	UNIQUE KEY(customerId),
+	FOREIGN KEY (itemId) REFERENCES Product(itemId) ON UPDATE CASCADE
+)
+```
 
-* CustOrder
+> ### Product
 
-| Field | Type | Null | Key | Default | Extra |
-| ----: | :--: | :--: | :-: | :-----: | :---: |
-| orderId | int(11) | NO | PRI | NULL | auto-increment |
-| itemId | int(11) | YES |    | NULL |    |
-| itemName | varchar(100) | YES |    | NULL |    |
-| cutomerId | varchar(100) | YES |    | NULL |    |
-| device | varchar(100) | YES |    | NULL |    |
-| quantity | int(11) | YES |    | NULL |    |
-| price | double | YES |    | NULL |    |
-| orderStatus | varchar(100) | YES |    | NULL |    |
-| orderdate | date | YES |    | NULL |    |
-
-* Product
-
-| Field | Type | Null | Key | Default | Extra |
-| ----: | :--: | :--: | :-: | :-----: | :---: |
-| itemId | int(11) | NO | PRI | NULL | auto-increment |
-| itemName | varchar(50) | YES |    | NULL |    |
-| category | varchar(30) | YES |    | NULL |    |
-| device | varchar(30) | YES |    | NULL |    |
-| quantity | int(11) | YES |    | NULL |    |
-| price | int(20) | YES |    | NULL |    |
-| content | varchar(300) | YES |    | NULL |    |
+```
+CREATE TABLE Product(
+	itemId int(11) NOT NULL AUTO INCREMENT,
+	itemName varchar(50) NOT NULL,
+	category varchar(30) NOT NULL,
+	device varchar(30) NOT NULL,
+	quantity int(11) NOT NULL,
+	price int(20) NOT NULL,
+	content varchar(300) NOT NULL,
+	PRIMARY KEY(itemId), 
+	UNIQUE KEY(itemName)
+)
+```
